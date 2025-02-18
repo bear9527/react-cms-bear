@@ -7,7 +7,7 @@ const Polyline = () => {
     let chartInstance = echarts.init(chartRef.current);
     const option = {
       title: {
-        text: 'Stacked Line'
+        text: '文章浏览量排行榜'
       },
       tooltip: {
         trigger: 'axis'
@@ -71,9 +71,9 @@ const Polyline = () => {
 
     chartInstance.setOption(option);
   }, [])
-  return <div style={{ textAlign: "center" }}>
+  return <div style={{ textAlign: "center", width: '100%' }} className="px-2">
 
-    <div ref={chartRef} style={{ height: "400px", width: '40vw', display: 'flex', justifyContent: 'center' }}></div>
+    <div ref={chartRef} style={{ height: "400px", width: '40vw', justifyContent: 'center' }}></div>
   </div>
 
 }

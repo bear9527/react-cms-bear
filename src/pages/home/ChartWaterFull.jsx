@@ -7,7 +7,7 @@ const ChartWaterFull = () => {
     let chartInstance = echarts.init(chartRef.current);
     const option = {
       title: {
-        text: 'Stacked Line',
+        text: '门户网浏览量',
         top: 0,
       },
       tooltip: {
@@ -72,7 +72,7 @@ const ChartWaterFull = () => {
 
     chartInstance.setOption(option);
   }, [])
-  return <div style={{ textAlign: "center" }}>
+  return <div style={{ textAlign: "center" }}  className="px-2">
 
     <div ref={chartRef} style={{ height: "400px", width: '40vw', display: 'flex', justifyContent: 'center' }}></div>
   </div>

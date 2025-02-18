@@ -3,12 +3,12 @@ import DemoColumn from "./DemoColumn"
 import ChartWaterFull from "./ChartWaterFull"
 const Home = () => {
 
-    return <div className="mt-4">
+    return <div className="mt-4 w-full w-1/1">
         <h1 className="text-3xl font-bold underline">
-            Hello world!
+            欢迎光临小而美的内容管理平台！
         </h1>
             <div
-                className='flex w-full'
+                className='flex'
             >
                 <div className="w-1/2">
 
