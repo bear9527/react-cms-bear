@@ -1,6 +1,7 @@
 
 import DemoColumn from "./DemoColumn"
 import ChartWaterFull from "./ChartWaterFull"
+import HomeWebSocket from "./say"
 const Home = () => {
 
     return <div className="mt-4 w-full w-1/1">
@@ -11,13 +12,13 @@ const Home = () => {
                 className='flex'
             >
                 <div className="w-1/2">
-
                     <ChartWaterFull />
                 </div>
                 <div className="w-1/2">
                     <DemoColumn className="w-1/2" />
                 </div>
             </div>
+        <HomeWebSocket></HomeWebSocket>
     </div>
 }
 

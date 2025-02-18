@@ -15,6 +15,7 @@ const ChartWaterFull = () => {
       },
       legend: {
         top: '5%',
+        right: 0,
         data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
       },
       grid: {
