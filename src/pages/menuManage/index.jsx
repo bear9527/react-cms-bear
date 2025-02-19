@@ -26,7 +26,7 @@ const data = [
         address: 'Sydney No. 1 Lake Park',
     },
 ];
-const Categorys = () => {
+const Menus = () => {
     const [dataList, setDataList] = useState(data)
     const columns = [
         {
@@ -88,10 +88,11 @@ const Categorys = () => {
         <Table
             columns={columns}
             dataSource={dataList}
+            rowKey={(record)=> record.id}
             bordered
         />
     </>
 }
 
 
-export default Categorys
+export default Menus

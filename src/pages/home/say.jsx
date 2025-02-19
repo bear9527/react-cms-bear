@@ -1,6 +1,7 @@
 
 
 import { useState } from "react";
+import { Button, Modal, Input } from 'antd';
 const HomeWebSocket = () => {
     const [message, setMessage] = useState('welcome');
     var socket
@@ -39,11 +40,11 @@ const HomeWebSocket = () => {
     }
     return <div>
         <div>
-            <h3>WebSocket 聊天室：</h3>
-            <textarea id="responseTest"></textarea>
+            {/* <h3>WebSocket 聊天室：</h3> */}
+            <textarea id="responseTest" className="w-300px"></textarea>
             <br />
-            <input type="text" className="w-300px" id="srk" />
-            <button onClick={() => send(message)} >发送消息</button>
+            <Input type="text" className="w-300px" id="srk" />
+            <Button onClick={() => send(message)} >发送消息</Button>
             {/* <input type="button" value="清空聊天记录" onclick="javascript:document.getElementById('responseTest').value=''" /> */}
         </div>
 
