@@ -5,6 +5,7 @@ import { setToken } from "../utils/auth";
 import { setToken as setStoreToken } from "../store/modules/userStore";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "./Login.css"; // 引入样式文件
 const Login = () => {
   const dispatch = useDispatch();
   const navgate = useNavigate();
@@ -35,7 +36,7 @@ const Login = () => {
     }
   };
   const reqReg = async (values: any) => {
-    console.log('params',values);
+    console.log('params', values);
     const _value = {
       username: 'bear9527',
       password: '123456',
@@ -56,31 +57,37 @@ const Login = () => {
   };
   return (
     <div className="login-wrap">
-      <Form
-        name="basic"
-        labelCol={{ span: 5 }}
-        wrapperCol={{ span: 16 }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
-        >
-          <Input />
-        </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
-        >
-          <Input.Password />
-        </Form.Item>
+      <div className="login-container">
+        <div className="login-content">
+          <div className="logo">
+            <img src="../1.jpg" alt="logo" />
+          </div>
+          <Form
+            name="basic"
+            labelCol={{ span: 5 }}
+            wrapperCol={{ span: 16 }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            autoComplete="off"
+          >
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[{ required: true, message: "Please input your username!" }]}
+            >
+              <Input />
+            </Form.Item>
 
-        {/* <Form.Item
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[{ required: true, message: "Please input your password!" }]}
+            >
+              <Input.Password />
+            </Form.Item>
+
+            {/* <Form.Item
           name="remember"
           valuePropName="checked"
           wrapperCol={{ offset: 8, span: 16 }}
@@ -88,17 +95,20 @@ const Login = () => {
           <Checkbox>Remember me</Checkbox>
         </Form.Item> */}
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <Button type="primary" onClick={reqReg}>
-          reqReg
-          </Button>
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+              <Button type="primary" onClick={reqReg}>
+                reqReg
+              </Button>
 
-          
-        </Form.Item>
-      </Form>
+
+            </Form.Item>
+          </Form>
+        </div>
+      </div>
+
     </div>
   );
 };
