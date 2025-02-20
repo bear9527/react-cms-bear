@@ -19,6 +19,14 @@ export function addMenu(data: CateGoryParams){
   })
 }
 
+//  编辑菜单
+export function editMenu(data: CateGoryParams){
+  return request({
+    url: `/menu/editMenu`,
+    method: 'post',
+    data
+  })
+}
 
 // 获取菜单信息
 export function getMenuInfo(params: {id: number}) {

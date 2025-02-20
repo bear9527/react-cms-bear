@@ -5,10 +5,11 @@ import {
 import Editor from "@/components/Editor";
 import { useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import { addMenu, getMenuInfo } from "@/api/menu"
+import { editMenu, getMenuInfo } from "@/api/menu"
 const EditMenuDetail = () => {
     const params = useParams();
     const [content, setContent] = useState('');
+    const [form] = Form.useForm();
     // const init = useCallback(()=>{
 
     //     console.log('params',params);
@@ -18,8 +19,9 @@ const EditMenuDetail = () => {
     // }, [params.id])
     // init();
     const getMenuInfoFn = async (id) =>{
-        const res = await getMenuInfo(id);
-        console.log('getMenuInfoFn res', res);
+        const {data} = await getMenuInfo({id: id});
+        console.log('getMenuInfoFn res', data);
+        form.setFieldsValue({ title: data.title, description: data.description, id: id });
     }
     useEffect(() => {
 
@@ -45,8 +47,8 @@ const EditMenuDetail = () => {
 
     const onFinish = async (values) => {
         const params = { ...values.menu  }
-        console.log(params);
-        const res = await addMenu(params);
+        console.log('onFinish',params);
+        const res = await editMenu(params);
         console.log('res', res.status);
         if (res.status == 0) {
             
@@ -65,20 +67,21 @@ const EditMenuDetail = () => {
             <Form
                 {...layout}
                 name="nest-messages"
+                form={form}
                 onFinish={onFinish}
                 style={{ margin: 'auto' }}
                 validateMessages={validateMessages}
             >
-                <Form.Item name={['menu', 'title']} label="title" rules={[{ required: true }]}>
+                <Form.Item name="title" label="title" rules={[{ required: true }]}>
                     <Input />
                 </Form.Item>
                 {/* <Form.Item name={['menu', 'description']} label="Description" rules={[{  }]}>
                     <Input />
                 </Form.Item> */}
-                <Form.Item name={['menu', 'description']} label="Description">
+                <Form.Item name="description" label="Description">
                     <Input.TextArea />
                 </Form.Item>
-                <Form.Item name={['menu', 'img']} label="img">
+                <Form.Item name="img" label="img">
                     <Input />
                 </Form.Item>
                 {/* <Form.Item  name={['menu', 'content']} label={null}>
