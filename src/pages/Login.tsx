@@ -1,11 +1,13 @@
 // import { Link, useSearchParams } from "react-router-dom";
 import { login, ILoginInfo, regUser } from "../api/user";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Tabs, Image, Col, Divider, Row } from "antd";
 import { setToken } from "../utils/auth";
 import { setToken as setStoreToken } from "../store/modules/userStore";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; // 引入样式文件
+import bgLeft from '../static/img/bg-left.png'; // 引入图片
+const { TabPane } = Tabs;
+
 const Login = () => {
   const dispatch = useDispatch();
   const navgate = useNavigate();
@@ -55,61 +57,110 @@ const Login = () => {
       console.log(error);
     }
   };
+
   return (
-    <div className="login-wrap">
-
-      <div className="login-container">
-        <div className="login-content">
-          <div className="logo">
-            <img src="../1.jpg" alt="logo" />
-          </div>
-          <Form
-            name="basic"
-            labelCol={{ span: 5 }}
-            wrapperCol={{ span: 16 }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-          >
-            <Form.Item
-              label="Username"
-              name="username"
-              rules={[{ required: true, message: "Please input your username!" }]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[{ required: true, message: "Please input your password!" }]}
-            >
-              <Input.Password />
-            </Form.Item>
-
-            {/* <Form.Item
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{ offset: 8, span: 16 }}
-        >
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item> */}
-
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-              <Button type="primary" onClick={reqReg}>
-                reqReg
-              </Button>
-
-
-            </Form.Item>
-          </Form>
-        </div>
+    <div className="flex " >
+      <div className="left-bg  flex-2" >
+        <Image
+          width={498}
+          src={bgLeft}
+          preview={false}
+        />
       </div>
+      <div className="right-bg flex-1 " >
+        <Row>
+          <Col offset={8} className="relative">
+            <div className="login-wrap w-[350px] absolute top-80 shadow-2xl rounded-md font-serif font-bold" >
+              <Tabs defaultActiveKey="1">
+                {/* 登录 */}
+                <TabPane tab="用户注册" key="1">
+                  <Form
+                    name="basic"
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 16 }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    autoComplete="off"
+                  >
+                    <Form.Item
+                      label="用户名"
+                      name="username"
+                      rules={[{ required: true }]}
+                    >
+                      <Input className="space-x-1" type="text" placeholder="请输入用户名" />
+                    </Form.Item>
 
-    </div>
+                    <Form.Item
+                      label="密 &nbsp;  &nbsp;码"
+                      name="password"
+                      rules={[{ required: true, message: "Please input your password!" }]}
+                    >
+                      <Input type="password" placeholder="请输入密码" />
+                    </Form.Item>
+
+                    {/* <Form.Item
+      name="remember"
+      valuePropName="checked"
+      wrapperCol={{ offset: 8, span: 16 }}
+    >
+      <Checkbox>Remember me</Checkbox>
+    </Form.Item> */}
+
+                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                      <Button type="primary" htmlType="submit">
+                        submit
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                </TabPane>
+                {/* 注册 */}
+                <TabPane tab="用户登录" key="2">
+                  <Form
+                    name="basic"
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 16 }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    autoComplete="off"
+                  >
+                    <Form.Item
+                      label="用户名"
+                      name="username"
+                      rules={[{ required: true }]}
+                    >
+                      <Input className="space-x-1" type="text" placeholder="请输入用户名" />
+                    </Form.Item>
+
+                    <Form.Item
+                      label="密 &nbsp;  &nbsp;码"
+                      name="password"
+                      rules={[{ required: true, message: "Please input your password!" }]}
+                    >
+                      <Input type="password" placeholder="请输入密码" />
+                    </Form.Item>
+
+                    {/* <Form.Item
+      name="remember"
+      valuePropName="checked"
+      wrapperCol={{ offset: 8, span: 16 }}
+    >
+      <Checkbox>Remember me</Checkbox>
+    </Form.Item> */}
+
+                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                      <Button type="primary" onClick={reqReg}>
+                        submit
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                </TabPane>
+              </Tabs>
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </div >
+
   );
 };
 export default Login;
