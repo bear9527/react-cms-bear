@@ -12,15 +12,15 @@ const HomeWebSocket = () => {
         socket = new WebSocket("ws://localhost:8888/ws")
         socket.onmessage = function (event) {
             var ta = document.getElementById('responseTest')
-            ta.value = ta.value + '\n' + event.data
+            ta.innerText = ta.innerText + '\n' + event.data
         }
         socket.onopen = function (event) {
             var ta = document.getElementById('responseTest')
-            ta.value = '连接开启!'
+            ta.innerText = '连接开启!'
         }
         socket.onclose = function (event) {
             var ta = document.getElementById('responseTest')
-            ta.value = '连接关闭!'
+            ta.innerText = '连接关闭!'
         }
     } else {
         alert('你的浏览器不支持WebSocket')
@@ -41,10 +41,14 @@ const HomeWebSocket = () => {
     return <div>
         <div>
             {/* <h3>WebSocket 聊天室：</h3> */}
-            <textarea id="responseTest" className="w-300px"></textarea>
+            {/* <textarea id="responseTest" className="w-300px"></textarea> */}
+            {/* <Input id="responseTest" type="text" className="w-300px h-500px" /> */}
+            <div id="responseTest"  className="w-300 mh-10 bg-gray-600 text-white" >
+                
+            </div>
             <br />
             <Input type="text" className="w-300px" id="srk" />
-            <Button onClick={() => send(message)} >发送消息</Button>
+            <Button onClick={() => send(message)}>发送消息</Button>
             {/* <input type="button" value="清空聊天记录" onclick="javascript:document.getElementById('responseTest').value=''" /> */}
         </div>
 
