@@ -4,7 +4,7 @@ import {
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, MenuProps, theme } from 'antd';
-import { items } from "./menu";
+import { items, menuFn } from "./menu";
 import { Outlet, useNavigate } from 'react-router-dom';
 import BreadcrumbBox from "./Breadcrumb";
 // import { hashHistory } from 'react-router'
@@ -42,14 +42,15 @@ const LayoutApp: React.FC = () => {
     setActiveKey(['system', location.pathname.slice(1)])
 
     setOpenKeys([...getArrPathToKeys(items) as any])
+    // setOpenKeys([location.pathname.slice(1)])
 
 
 
   }, [location.pathname]);
   const onClick: MenuProps['onClick'] = (e: any) => {
-    console.log('click ', e);
+    console.log('click ', e.item.props.path);
     setActiveKey([...e.key])
-    navigate(`${e.key}`)
+    navigate(`${e.item.props.path || e.key }`)
     // document.location.href = "/login"
   };
 
@@ -61,8 +62,8 @@ const LayoutApp: React.FC = () => {
           theme="dark"
           mode="inline"
           selectedKeys={[...activeKey]}
-          openKeys={[...openKeys]}
-          items={items}
+          // openKeys={[...openKeys]}
+          items={menuFn()}
           onClick={onClick}
         />
       </Sider>

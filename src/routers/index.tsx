@@ -11,6 +11,7 @@ const UserDetail = lazy(() => import('../pages/UserDetail'))
 const Articles = lazy(() => import('../pages/articles'))
 const ArticleDetail = lazy(() => import('../pages/articles/Detail'))
 const MenuDetail = lazy(() => import('../pages/menuManage/Detail'))
+const Contents = lazy(() => import('../pages/contents'))
 
 const constantRoutes = [
   { path: 'login', title: '登录', element: <Login /> },
@@ -130,6 +131,23 @@ const constantRoutes = [
         }
       },
 
+      {
+        key: 'contents',
+        path: 'contents/:id?',
+        title: '内容管理',
+        element: <Contents />,
+        meta: {
+          breadcrumb: [
+            {
+              href: '/',
+              title: '首页',
+            },
+            {
+              title: '内容管理'
+            }
+          ]
+        }
+      },
       
       {
         key: 'user',
