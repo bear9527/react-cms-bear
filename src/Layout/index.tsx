@@ -13,6 +13,7 @@ import { getArrPathToKeys } from "../utils"
 import { getUserInfo } from "../api/user";
 import { useDispatch, useSelector } from "react-redux";
 import { setMyInfo } from "../store/modules/userStore";
+import { ReactComponent as LOGO } from "../static/svg/logo.svg";
 const { Header, Sider, Content } = Layout;
 const LayoutApp: React.FC = () => {
   const location = useLocation()
@@ -57,7 +58,10 @@ const LayoutApp: React.FC = () => {
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <div className="demo-logo-vertical">
+          {/* <img src={LOGO}/> */}
+          <LOGO className='logo w-full h-24 p-2'/>
+        </div>
         <Menu
           theme="dark"
           mode="inline"
